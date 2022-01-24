@@ -5,7 +5,7 @@
 # Dataset
 * [Iran plate](https://github.com/SeyedHamidreza/car_plate_dataset)
 * [Licence plate](http://www.inf.ufrgs.br/~crjung/alpr-datasets/)
-* [Cars dataset](https://ai.stanford.edu/~jkrause/cars/car_dataset.html)
+* [Cars dataset](https://ai.stanford.edu/~jkrause/cars/car_dataset.html). Not a good dataset: the plates are not present.
 * [Kaggle](https://www.kaggle.com/andrewmvd/car-plate-detection)
 * [Ufpr-Alpr](https://paperswithcode.com/dataset/ufpr-alpr) (an email is needed to download the dataset)
 * [Other licence plate dataset](https://public.roboflow.com/object-detection/license-plates-us-eu)
