@@ -9,3 +9,4 @@
 * [Kaggle](https://www.kaggle.com/andrewmvd/car-plate-detection)
 * [Ufpr-Alpr](https://paperswithcode.com/dataset/ufpr-alpr) (an email is needed to download the dataset)
 * [Other licence plate dataset](https://public.roboflow.com/object-detection/license-plates-us-eu)
+* [Indian dataset](https://dataturks.com/projects/devika.mishra/Indian_Number_plates)
