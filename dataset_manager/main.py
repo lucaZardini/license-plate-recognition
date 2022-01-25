@@ -1,12 +1,12 @@
 import os
 
-from dataset import DatasetSize
+from dataset import Dataset
 
 
 def main():
-    dataset = DatasetSize.build(path=os.getenv("DATASET_PATH"), name=os.getenv("DATASET_NAME"), label_path=os.getenv("DATASET_LABEL"))
+    dataset = Dataset.build(path=os.getenv("DATASET_PATH"), name=os.getenv("DATASET_NAME"), label_path=os.getenv("DATASET_LABEL"))
 
-    dataset.separate_img_and_labels()
+    # dataset.separate_img_and_labels()
     # print(len(dataset.images))
     # print(dataset.images_are_squared)
     # print(len(dataset.format))
@@ -27,8 +27,8 @@ def main():
     # print(dataset.images[0].width)
     # print(dataset.images[0].height)
 
-    # if dataset.image_sizes[0] != (int(os.getenv("DATASET_SIZE")), int(os.getenv("DATASET_SIZE"))):
-    #     dataset.change_size(new_size=int(os.getenv("DATASET_SIZE")))
+    if dataset.image_sizes[0] != (int(os.getenv("DATASET_SIZE")), int(os.getenv("DATASET_SIZE"))):
+        dataset.change_size(new_size=int(os.getenv("DATASET_SIZE")), resized_folder=os.getenv("DATASET_RESIZED_PATH"))
 
 
 

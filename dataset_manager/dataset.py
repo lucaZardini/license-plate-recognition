@@ -22,7 +22,7 @@ class ImageSize:
 
 
 @dataclass
-class DatasetSize:
+class Dataset:
     name: str
     path: str
     number_files: int
@@ -48,12 +48,23 @@ class DatasetSize:
                 sizes.append((image.width, image.height))
         return sizes
 
-    def change_size(self, new_size: int) -> None:
+    def change_size(self, new_size: int, resized_folder: str) -> None:
+        image_path = resized_folder+"/images"
+        label_path = resized_folder+"/labels"
+        if os.path.exists(resized_folder):
+            if not os.path.exists(resized_folder+"/images"):
+                os.makedirs(resized_folder+"/images")
+            if not os.path.exists(resized_folder+"/labels"):
+                os.makedirs(resized_folder+"/labels")
+        else:
+            raise IOError
         for imm in self.images:
             image = PIL.Image.open(imm.path)
             image.resize((new_size, new_size))
-            image.save("path")  # TODO
-            self._recalculate_labels(label_path=imm.label_path, new_size=new_size, old_width=imm.width, old_height=imm.height)
+            image.save(image_path+"/"+imm.name)
+            last_point = imm.name.rfind(".")
+            label_name = imm.name[:last_point]+".txt"
+            self._recalculate_labels(label_path=imm.label_path, new_size=new_size, old_width=imm.width, old_height=imm.height, labels_path=label_path, label_name=label_name)
 
     # def change_format(self, new_format: str) -> None:
     def separate_img_and_labels(self):
@@ -70,48 +81,55 @@ class DatasetSize:
             shutil.move(image.label_path, new_path_label)
 
     @staticmethod
-    def _recalculate_labels(label_path: str, new_size: int, old_width: int, old_height: int) -> None:
-        image_class, x, y, w, h = DatasetSize.load_label(label_path, old_width, old_height)
-        for i in range(len(image_class)):
-            new_x = x[i]*new_size/old_width
-            new_y = y[i]*new_size/old_height
-            new_w = w[i]*new_size/old_width
-            new_h = h[i]*new_size/old_height
-            with open() as f:  # TODO
-                new_s = ""+str(image_class[i])+" "+str(new_x)+" "+str(new_y)+" "+str(new_w)+" "+str(new_h)
+    def _recalculate_labels(label_path: str, new_size: int, old_width: int, old_height: int, labels_path: str, label_name: str) -> None:
+        image_class, x, y, w, h = Dataset.load_label(label_path, old_width, old_height)
+        with open(labels_path + "/" + label_name, "w") as f:
+
+            for i in range(len(image_class)):
+                new_x = x[i]*new_size/old_width
+                new_y = y[i]*new_size/old_height
+                new_w = w[i]*new_size/old_width
+                new_h = h[i]*new_size/old_height
+                new_s = ""+str(image_class[i])+" "+str(new_x/new_size)+" "+str(new_y/new_size)+" "+str(new_w/new_size)+" "+str(new_h/new_size)+"\n"
                 f.write(new_s)
 
     @staticmethod
-    def load_label(label_path: str, old_width: int, old_height: int) -> (List[int], List[int], List[int], List[int], List[int]):
-        img_class = x = y = w = h = []
+    def load_label(label_path: str, old_width: int, old_height: int) -> (List[int], List[float], List[float], List[float], List[float]):
+        img_class = []
+        x = []
+        y = []
+        w = []
+        h = []
+        number_lines = 0
         with open(label_path, "r") as f:
             for line in f:
+                number_lines=number_lines+1
                 values = line.split(" ")
                 img_class.append(int(values[0]))
-                x.append(int(values[1])*old_width)
-                y.append(int(values[2])*old_height)
-                w.append(int(values[3])*old_width)
-                h.append(int(values[4])*old_height)
+                x.append(float(values[1])*old_width)
+                y.append(float(values[2])*old_height)
+                w.append(float(values[3])*old_width)
+                h.append(float(values[4])*old_height)
             return img_class, x, y, w, h
 
     @staticmethod
-    def build(name: str, path: str, label_path: str) -> DatasetSize:
+    def build(name: str, path: str, label_path: str) -> Dataset:
         files = os.listdir(path)
         images = []
         format = []
         for file in files:
-            if DatasetSize.file_is_image(file):
+            if Dataset.file_is_image(file):
                 filepath = path + "/" + file
                 image = PIL.Image.open(filepath)
                 width, height = image.size
-                image_label_path = DatasetSize.label_path(label_path=label_path, image_name=file)
+                image_label_path = Dataset.label_path(label_path=label_path, image_name=file)
                 images.append(
                     ImageSize(name=file, path=filepath, height=height, width=width, label_path=image_label_path))
                 last_point = file.rfind(".")
                 file_format = file[last_point:]
                 if file_format not in format:
                     format.append(file_format)
-        return DatasetSize(name=name, path=path, number_files=len(images), format=format, images=images)
+        return Dataset(name=name, path=path, number_files=len(images), format=format, images=images)
 
     @staticmethod
     def label_path(image_name: str, label_path: str) -> str:
