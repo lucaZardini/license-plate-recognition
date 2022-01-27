@@ -1,5 +1,5 @@
 from utils.constants import ROOT
-from yolov5 import detect
+import subprocess
 
 
 class YoloInterface:
@@ -8,8 +8,9 @@ class YoloInterface:
 
     @staticmethod
     def run_yolo_detect(source: str, destination: str):
-        detect.main(
-            ['--weights', YoloInterface.WEIGHTS,
+        subprocess.call(
+            ['python', ROOT / '..' / 'yolov5/detect.py',
+             '--weights', YoloInterface.WEIGHTS,
              '--source', source,
              '--name', destination]
         )
