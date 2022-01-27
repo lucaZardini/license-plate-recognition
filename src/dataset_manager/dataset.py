@@ -9,7 +9,7 @@ import PIL
 
 
 @dataclass
-class ImageSize:
+class Image:
     name: str
     path: str
     width: int
@@ -17,7 +17,7 @@ class ImageSize:
     label_path: str
 
     @property
-    def is_rectangular(self) -> bool:
+    def is_square(self) -> bool:
         return self.height == self.width
 
 
@@ -26,17 +26,17 @@ class Dataset:
     name: str
     path: str
     number_files: int
-    format: List[str]
-    images: List[ImageSize]
+    formats: List[str]
+    images: List[Image]
 
     @property
     def image_are_same_format(self) -> bool:
-        return len(self.format) == 1
+        return len(self.formats) == 1
 
     @property
-    def images_are_squared(self) -> bool:
+    def images_are_square(self) -> bool:
         for image in self.images:
-            if not image.is_rectangular:
+            if not image.is_square:
                 return False
         return True
 
@@ -66,7 +66,6 @@ class Dataset:
             label_name = imm.name[:last_point]+".txt"
             self._recalculate_labels(label_path=imm.label_path, new_size=new_size, old_width=imm.width, old_height=imm.height, labels_path=label_path, label_name=label_name)
 
-    # def change_format(self, new_format: str) -> None:
     def separate_img_and_labels(self):
         if not os.path.exists(self.path+"/images"):
             os.makedirs(self.path+"/images")
@@ -116,7 +115,7 @@ class Dataset:
     def build(name: str, path: str, label_path: str) -> Dataset:
         files = os.listdir(path)
         images = []
-        format = []
+        formats = []
         for file in files:
             if Dataset.file_is_image(file):
                 filepath = path + "/" + file
@@ -124,12 +123,12 @@ class Dataset:
                 width, height = image.size
                 image_label_path = Dataset.label_path(label_path=label_path, image_name=file)
                 images.append(
-                    ImageSize(name=file, path=filepath, height=height, width=width, label_path=image_label_path))
+                    Image(name=file, path=filepath, height=height, width=width, label_path=image_label_path))
                 last_point = file.rfind(".")
                 file_format = file[last_point:]
-                if file_format not in format:
-                    format.append(file_format)
-        return Dataset(name=name, path=path, number_files=len(images), format=format, images=images)
+                if file_format not in formats:
+                    formats.append(file_format)
+        return Dataset(name=name, path=path, number_files=len(images), formats=formats, images=images)
 
     @staticmethod
     def label_path(image_name: str, label_path: str) -> str:

@@ -1,9 +1,0 @@
-train: ../Car_Plate_Dataset/images/train/ 
-val:  ../Car_Plate_Dataset/images/val/
-test: ../Car_Plate_Dataset/images/test/
-
-# number of classes
-nc: 1
-
-# class names
-names: ["lp"]
