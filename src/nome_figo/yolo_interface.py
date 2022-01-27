@@ -1,15 +1,15 @@
-from dataclasses import dataclass
-from yolov5 import val
+from utils.constants import ROOT
+from yolov5 import detect
 
-@dataclass
+
 class YoloInterface:
-    image_folder: str
-    destination_folder: str
 
-    def run_yolo_val(self):
-        val.main(
-            ['--weights', '',  # TODO
-             '--data', 'json',
-             '--task', 'test',
-             '--name', '']  # TODO
+    WEIGHTS = ROOT / "yolov5" / "weights" / "yolov5n_custom.pt"
+
+    @staticmethod
+    def run_yolo_detect(source: str, destination: str):
+        detect.main(
+            ['--weights', YoloInterface.WEIGHTS,
+             '--source', source,
+             '--name', destination]
         )

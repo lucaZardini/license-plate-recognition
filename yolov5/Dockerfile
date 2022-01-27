@@ -19,7 +19,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy contents
-COPY .. /usr/src/app
+COPY ../src /usr/src/app
 
 # Downloads to user config dir
 ADD https://ultralytics.com/assets/Arial.ttf /root/.config/Ultralytics/
