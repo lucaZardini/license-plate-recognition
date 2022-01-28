@@ -14,3 +14,16 @@ class YoloInterface:
              '--source', source,
              '--name', destination]
         )
+
+    @staticmethod
+    def run_yolo_val(destination: str, weights: str):
+        subprocess.call(
+            ['python', ROOT / 'yolov5/val.py',
+             '--weights', YoloInterface.WEIGHTS_PATH / weights,
+             '--data', ROOT / "validation" / 'data.yaml',
+             '--conf-thres', '0.25',
+             '--task', 'test',
+             '--single-cls',
+             '--project', destination,
+             '--name', 'test']
+        )
