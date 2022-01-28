@@ -12,7 +12,8 @@ class YoloInterface:
             ['python', ROOT / 'yolov5/detect.py',
              '--weights', YoloInterface.WEIGHTS_PATH / weights,
              '--source', source,
-             '--name', destination]
+             '--name', destination,
+             '--conf-thres', '0.16']
         )
 
     @staticmethod
@@ -21,7 +22,6 @@ class YoloInterface:
             ['python', ROOT / 'yolov5/val.py',
              '--weights', YoloInterface.WEIGHTS_PATH / weights,
              '--data', ROOT / "validation" / 'data.yaml',
-             '--conf-thres', '0.25',
              '--task', 'test',
              '--single-cls',
              '--project', destination,
