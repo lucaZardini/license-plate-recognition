@@ -1,7 +1,0 @@
-test: validation/dataset/images/test
-
-# number of classes
-nc: 1
-
-# class names
-names: ["lp"]
