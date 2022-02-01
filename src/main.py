@@ -1,7 +1,7 @@
 import argparse
 
-from src.image_processing.canny import CannyEdge
-from src.utils.constants import ROOT
+from detector.detector import LicensePlateDetection
+from utils.constants import ROOT
 
 
 def main():
@@ -14,9 +14,9 @@ def main():
     args = arg_parser.parse_args()
 
     if args.img_path:
-        CannyEdge.run_detection(source=str(ROOT / args.img_path), destination=str(ROOT / args.destination), is_folder=False)
+        LicensePlateDetection.run_detection(source=str(ROOT / args.img_path), destination=str(ROOT / args.destination), is_folder=False)
     else:
-        CannyEdge.run_detection(source=str(ROOT / args.img_folder), destination=str(ROOT / args.destination), is_folder=True)
+        LicensePlateDetection.run_detection(source=str(ROOT / args.img_folder), destination=str(ROOT / args.destination), is_folder=True)
 
 
 if __name__ == "__main__":
