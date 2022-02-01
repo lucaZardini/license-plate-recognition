@@ -9,9 +9,9 @@ Authors:
 
 ## Usage
 This project includes a YOLOv5 model with custom-trained weights, that allows you to run either detection (inference on unlabeled images) or validation (inference on labeled images, with performance results).
-1. Clone the repository:
+1. Clone this branch of the repository:
 ```
-git clone https://github.com/lucaZardini/car-plate-recognition.git
+git clone -b yolo --single-branch https://github.com/lucaZardini/license-plate-recognition.git
 ```
 2. *(Recommended)* Create a Python virtual environment in the repository folder, and activate it:
 ```
@@ -19,7 +19,7 @@ cd license-plate-recognition
 python3 -m venv venv
 source venv/bin/activate
 ```
-3. Install the required packages:
+3. Install the required packages (this may take a while):
 ```
 pip install -r requirements.txt
 ```
@@ -27,9 +27,17 @@ pip install -r requirements.txt
    * Put the images you want to run detection on in the `detection/images` folder. We already put some images there for convenience.
     If you want, you can specify a custom path with `--img-folder YOUR_IMG_FOLDER`, or a single image with `--img-path YOUR_IMG`.
    * The annotated images will be stored in `detection/results`. If you want, you can specify a custom path with `--destination YOUR_DESTINATION_FOLDER`.
-   * Run `python main.py --detect`, with any optional flags you need.
+   * Run (with any optional flags you need):
+    ```
+    cd src
+    python main.py --detect
+    ```
 
 5. For **validation**:
    * We provided a small set of images and labels for convenience. They can be found in `validation/dataset`. If you want to use your own images and labels, replace the current ones by making sure to keep the same folder structure.
    * The results of validation will be stored in `validation/results`. If you want, you can specify a custom path with `--destination YOUR_DESTINATION_FOLDER`.
-   * Run `python main.py --validate`, with any optional flags you need.
+   * Run (with any optional flags you need): 
+    ```
+    cd src
+    python main.py --validate
+    ```
