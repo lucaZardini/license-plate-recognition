@@ -1,4 +1,4 @@
-# License Plate Detection using YOLOv5
+# License Plate Detection using image processing techniques
 This project aims at detecting a license plate in an image using image processing techniques.
 
 This project was developed for the *Signal, Image and Video* course of the Master Degree *Artificial Intelligence Systems* at the University of Trento.
