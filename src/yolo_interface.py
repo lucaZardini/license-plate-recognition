@@ -1,4 +1,4 @@
-from src.utils.constants import ROOT
+from utils.constants import ROOT
 import subprocess
 
 

@@ -1,7 +1,7 @@
 import argparse
 
-from src.yolo_interface import YoloInterface
-from src.utils.constants import ROOT
+from yolo_interface import YoloInterface
+from utils.constants import ROOT
 
 
 def main():
@@ -21,9 +21,9 @@ def main():
     elif args.detect:
         destination = args.destination if args.destination != "results" else "detection/results"
         if args.img_path:
-            YoloInterface.run_yolo_detect(source=args.img_path, destination=ROOT/destination, weights=args.weights)
+            YoloInterface.run_yolo_detect(source=ROOT/args.img_path, destination=ROOT/destination, weights=args.weights)
         else:
-            YoloInterface.run_yolo_detect(source=args.img_folder, destination=ROOT/destination, weights=args.weights)
+            YoloInterface.run_yolo_detect(source=ROOT/args.img_folder, destination=ROOT/destination, weights=args.weights)
     else:
         print("ERROR: either use the flag --detect or --validate")
 
