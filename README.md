@@ -5,7 +5,7 @@ The project has two main branches:
 * **yolo**
 
 ## How to run
-The two branches contains two different car plate recognition method implementations, one using image processing and the other using yolov5. Move in the branche you want to use and follow the README instruction of that branch.
+The two branches contain two different car plate recognition method implementations, one using image processing and the other using yolov5. Move in the branche you want to use and follow the README instruction of that branch.
 
 ## Project Structure
 
