@@ -4,8 +4,12 @@ The project has two main branches:
 * **image-processing**
 * **yolo**
 
-## Image-processing
-### Branch structure
+## How to run
+The two branches contains two different car plate recognition method implementations, one using image processing and the other using yolov5. Move in the branche you want to use and follow the README instruction of that branch.
+
+## Project Structure
+
+### Image-processing
 ![img_process](https://user-images.githubusercontent.com/71773192/152195417-b657d71a-e847-499a-883c-bd50381e6182.png)
 
 This project contains:
@@ -20,8 +24,7 @@ This project contains:
     * constants.py: contains the constants used in project (the root folder)
     * images.py: contains all the image processing operations used  
 
-## Yolo
-### Branch structure
+### Yolo
 ![yol](https://user-images.githubusercontent.com/71773192/152195453-e39a30ae-2675-45f8-a9d1-34199216230b.png)
 
 This project contains:
