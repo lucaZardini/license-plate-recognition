@@ -49,4 +49,7 @@ This project contains:
   * **utils**: package containing useful code
     * **_constants.py_**: contains the constants used in project (the root folder)
   * **_yolo_interface.py_**: script that runs the detect or validate yolov5 scripts
-  * **yolov5**: folder that contains the clone of the yolov5 repository
+* **validation**
+  * **dataset**: folder that contains the images for validation
+  * **_data.yaml_**: yolov5 configuration file
+* **yolov5**: folder that contains the clone of the yolov5 repository
