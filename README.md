@@ -7,44 +7,46 @@ Authors:
 * [Nicola Farina](https://github.com/nicola-farina)
 * [Luca Zardini](https://github.com/lucaZardini)
 
-
+## Usage
 The project has two main branches:
+
 * **image-processing**
 * **yolo**
 
-## Usage
-The two branches contain two different car plate recognition method implementations, one using image processing and the other using yolov5. Move in the two branches to use the two methods and follow the README instruction of the branches.
+They contain two different car plate recognition method implementations, the first using image processing and the second using the neural network YOLOv5. 
+
+Switch to your branch of interest and follow the README instructions.
 
 ## Project Structure
 
 ### Image-processing
-![img_process](https://user-images.githubusercontent.com/71773192/152195417-b657d71a-e847-499a-883c-bd50381e6182.png)
+![img_process](https://user-images.githubusercontent.com/50495055/152204482-3466838e-156f-4e48-8675-5dfc7b0d2eac.png)
 
 This project contains:
-* images: folder that contains the images to detect
-* README.md: contains the information to use the code
-* requirements.txt: list of python libraries required to run correctly the code
-* src
-  * detector: python package
-    * detector.py: script that contains to code to detect license plates
-  * main.py: script to run to start the application
-  * utils: package containing useful code
-    * constants.py: contains the constants used in project (the root folder)
-    * images.py: contains all the image processing operations used  
+* **images**: folder that contains the images to detect
+* **_README.md_**: contains the information to use the code
+* **_requirements.txt_**: list of python libraries required to run the code
+* **src**
+  * **detector**: python package
+    * **_detector.py_**: script that contains to code to detect license plates
+  * **_main.py_**: script to run to start the application
+  * **utils**: package containing useful code
+    * **_constants.py_**: contains the constants used in project
+    * **_images.py_**: contains all the image processing operations and utilities used  
 
-### Yolo
-![yol](https://user-images.githubusercontent.com/71773192/152195453-e39a30ae-2675-45f8-a9d1-34199216230b.png)
+### YOLOv5
+![yolo](https://user-images.githubusercontent.com/50495055/152206670-0fff1b71-424b-4221-b4b8-1c1026d6e24d.png)
 
 This project contains:
-* detection
-  * images: folder that contains the images to detect
-* README.md: contains the information to use the code
-* requirements.txt: list of python libraries required to run correctly the code
-* src
-  * dataset_manager: python package
-    * dataset.py: contains code to organize dataset with some useful operation.
-  * main.py: script to run to start the application
-  * utils: package containing useful code
-    * constants.py: contains the constants used in project (the root folder)
-  * yolo_interface.py: script that runs the detect or validate yolov5 scripts
-  * yolov5: folder that contains the clone of the yolov5 repository
+* **detection**
+  * **images**: folder that contains the images to detect (no labels)
+* **_README.md_**: contains the information to use the code
+* **_requirements.txt_**: list of python libraries required to run the code
+* **src**
+  * **dataset_manager**: python package
+    * **_dataset.py_**: contains code to organize dataset with some useful operation.
+  * **_main.py_**: script to run to start the application
+  * **utils**: package containing useful code
+    * **_constants.py_**: contains the constants used in project (the root folder)
+  * **_yolo_interface.py_**: script that runs the detect or validate yolov5 scripts
+  * **yolov5**: folder that contains the clone of the yolov5 repository
