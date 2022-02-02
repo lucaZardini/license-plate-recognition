@@ -1,10 +1,18 @@
-# car-plate-recognition
+# License Plate Detection
+This project aims at detecting a license plate.
+
+This project was developed for the *Signal, Image and Video* course of the Master Degree *Artificial Intelligence Systems* at the University of Trento.
+
+Authors:
+* [Nicola Farina](https://github.com/nicola-farina)
+* [Luca Zardini](https://github.com/lucaZardini)
+
 
 The project has two main branches:
 * **image-processing**
 * **yolo**
 
-## How to run
+## Usage
 The two branches contain two different car plate recognition method implementations, one using image processing and the other using yolov5. Move in the branche you want to use and follow the README instruction of that branch.
 
 ## Project Structure
