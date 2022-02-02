@@ -3,6 +3,8 @@ This project aims at detecting a license plate.
 
 This project was developed for the *Signal, Image and Video* course of the Master Degree *Artificial Intelligence Systems* at the University of Trento.
 
+A report of our work is available [here](https://github.com/lucaZardini/license-plate-recognition/blob/main/report.pdf).
+
 Authors:
 * [Nicola Farina](https://github.com/nicola-farina)
 * [Luca Zardini](https://github.com/lucaZardini)
