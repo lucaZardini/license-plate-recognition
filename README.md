@@ -22,7 +22,15 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-4. Put the images to run detection on in the `images` folder. If you want to use your own folder, you can specify it with the `--img_folder` flag when running the script. If you want to use a single file, use `--img_path` instead. The results are stored by default in `results` folder, but you can specify a different folder using the `--destination` flag. Now, simply run the script (with any optional flag you need):
+4. Put the images to run detection on in the `images` folder. If you want to use your own folder, you can specify it with the `--img_folder` flag when running the script. If you want to use a single file, use `--img_path` instead. 
+
+   (*WARNING: paths are relative to the project root*)
+
+5. The results are stored by default in `results` folder. You can specify a different folder using the `--destination` flag. 
+
+   (*WARNING: paths are relative to the project root*)
+
+6. Now, simply run the script (with any optional flag you need):
 ```
 cd src
 python main.py
