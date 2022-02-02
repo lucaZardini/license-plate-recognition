@@ -19,7 +19,7 @@ cd license-plate-recognition
 python3 -m venv venv
 source venv/bin/activate
 ```
-3. Install the required packages (this may take a while):
+3. Install the required packages (this may take a while due to the large size of Torch package, ~2GB):
 ```
 pip install -r requirements.txt
 ```
