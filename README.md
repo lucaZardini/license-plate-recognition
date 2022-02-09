@@ -13,7 +13,7 @@ Authors:
 The project has two main branches:
 
 * [**image-processing**](https://github.com/lucaZardini/license-plate-recognition/tree/image_processing)
-* [**yolo**](https://github.com/lucaZardini/license-plate-recognition/blob/yolo)
+* [**yolo**](https://github.com/lucaZardini/license-plate-recognition/tree/yolo)
 
 They contain two different car plate recognition method implementations, the first using image processing and the second using the neural network YOLOv5. 
 
