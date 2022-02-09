@@ -24,7 +24,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 4. For **detection**:
-   * Put the images you want to run detection on in the `detection/images` folder. We already put some images there for convenience.
+   * Create a `detection/images` folder and put the images you want to run detection on in that folder.
     If you want, you can specify a custom path with `--img-folder YOUR_IMG_FOLDER`, or a single image with `--img-path YOUR_IMG`.
     
     (*WARNING: paths are relative to the project root*)
@@ -40,9 +40,7 @@ pip install -r requirements.txt
     ```
 
 5. For **validation**:
-   * We provided a small set of images and labels for convenience. They can be found in `validation/dataset`. If you want to use your own images and labels, replace the current ones by making sure to keep the same folder structure.
-    
-     (*WARNING: paths are relative to the project root*)
+   * Create a `dataset` folder in the folder `validation`. Create two folders `images` and `labels`, and inside of both of them create a `test` folder. In `images/test` put your images, in `labels/test` put your labels. This is the usual YOLOv5 dataset structure.
     
    * The results of validation will be stored in `validation/results`. If you want, you can specify a custom path with `--destination YOUR_DESTINATION_FOLDER`.
 
